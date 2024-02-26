@@ -1,0 +1,28 @@
+
+<html>
+<head>
+  <title>Life Expectancy Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Life Expectancy Lab - (Insert your name here)</h1>
+
+  <div id="line_graph_all">
+    {% include 'line_graph.svg' %}
+  </div>
+
+  <div>
+    <form action="/year" method="GET">
+      <label for="year">Choose a year:</label><br>
+      <select name="year" id="year_select">
+      </select>
+      <input type="submit" value="Submit">
+    <form>
+  </div>
+
+  <footer>
+    All data from <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=MX-US-CA"> The World Bank</a>.
+  </footer>
+</body>
+</html>
