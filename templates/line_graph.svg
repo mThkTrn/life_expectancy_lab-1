@@ -1,5 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
 
-     <text x="250" y="250" text-anchor="middle">Insert your line graph here</text>
+     <text x="250" y="250" text-anchor="middle">Insert your line graph here - TESTING</text>
+     <line class = "axes" x1 = "50" y1 = "50" x2 = "50" y2 = "450" stroke = "black"/>
+     <line class = "axes" x1 = "50" y1 = "450" x2 = "450" y2 = "450" stroke = "black"/>
 
+     <polyline class = "dataline" id = "Canada" points = "{{polylines[0]}}" fill = "none" stroke = "black"/>
+     <polyline class = "dataline" id = "Mexico" points = "{{polylines[1]}}" fill = "none" stroke = "black"/>
+     <polyline class = "dataline" id = "USA" points = "{{polylines[2]}}" fill = "none" stroke = "black"/>
+
+     <text x = "450" y = {{labels_y_vals[0]}} class = "line_label" id = "canada_label">Canada</text>
+     <text x = "450" y = {{labels_y_vals[1]}} class = "line_label" id = "mexico_label">Mexico</text>
+     <text x = "450" y = {{labels_y_vals[2]}} class = "line_label" id = "usa_label">USA</text>
+
+     {%for year in range(1960, 2021, 10)%}
+          <text class = "axislabel" x = "{{50 + (year-1960)*6.66}}" y = "460"> {{year}} </text>
+     {%endfor%}
+
+     {%for age in range(0, 101, 10)%}
+          <text class = "axislabel" x = "35" y = "{{450-4*age}}"> {{age}} </text>
+     {%endfor%}
 </svg>
