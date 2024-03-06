@@ -12,8 +12,12 @@ def index():
 
     with open(filename) as test_file:
         data = json.load(test_file)
+
     polylines = []
     labels_y_vals = []
+
+    avg_sum = 0
+    avg_count = 0
     for country in ["Canada", "Mexico", "United States"]:
 
         polyline = []
@@ -22,6 +26,9 @@ def index():
             out = []
             out.append(str(50 + (year-1960)*6.66))
             out.append(str(450-4*(data[country][str(year)])))
+
+            avg_sum += data[country][str(year)]
+            avg_count += 1
             print(out)
             polyline.append(out)
             if year == 2020:
@@ -35,9 +42,11 @@ def index():
         print("--")
         polylines.append(polyline)
 
+        avg = avg_sum/avg_count
 
 
-    return render_template('index.html', polylines = polylines, labels_y_vals = labels_y_vals, data = data)
+
+    return render_template('index.html', polylines = polylines, labels_y_vals = labels_y_vals, data = data, avg = avg)
 
 @app.route('/year')
 def year():
