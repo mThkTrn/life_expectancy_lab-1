@@ -1,11 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
 
+   <line x1 = "50" y1 = "{{avg_height}}" x2 = "450" y2 = "{{avg_height}}" stroke = "grey" stroke-dasharray = "5,5"/>
+   <text x = "450" y = "{{avg_height}}" class = "line_label" id = "usa_label" fill = "grey">Average</text>
+
      <line class = "axes" x1 = "50" y1 = "50" x2 = "50" y2 = "450" stroke = "black"/>
      <line class = "axes" x1 = "50" y1 = "450" x2 = "450" y2 = "450" stroke = "black"/>
 
      <polyline class = "dataline" id = "Canada" points = "{{polylines[0]}}" fill = "none" stroke = "black"/>
      <polyline class = "dataline" id = "Mexico" points = "{{polylines[1]}}" fill = "none" stroke = "black"/>
      <polyline class = "dataline" id = "USA" points = "{{polylines[2]}}" fill = "none" stroke = "black"/>
+
+  
 
      <text x = "450" y = {{labels_y_vals[0]}} class = "line_label" id = "canada_label">Canada</text>
      <text x = "450" y = {{labels_y_vals[1]}} class = "line_label" id = "mexico_label">Mexico</text>
@@ -19,6 +24,6 @@
           <text class = "axislabel" x = "35" y = "{{450-4*age}}"> {{age}} </text>
      {%endfor%}
      <text x = "250", y = "480" text-anchor = "middle">Year</text>
-
-     <text x = "30", y = "250" text-anchor = "middle" transform="translate(0, 10) rotate(90)">Life Expectancy</text>
+     <text x="20" y="250" style="writing-mode: tb;" text-anchor = "middle"> Life Expectancy </text>
+     <text x = "250", y = "30" text-anchor = "middle" id = "linegraphtitle">Life Expectancy in North American Countries From 1960-2020</text>
 </svg>
