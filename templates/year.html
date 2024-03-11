@@ -3,17 +3,40 @@
 <head>
   <title>Life Expectancy Lab - {{year}} Map</title>
   <link rel="stylesheet" href="styles.css">
+  <p class = "noshow" id = "colorinfo">{{colorstr}}</p>
 </head>
 <body>
 
   <h1>Life Expectancy Lab - Madhavendra Thakur</h1>
-
+  <p>These are the life expectancies in North America in {{year}}. Canada's life expectancy was {{expectancies[0]}} ({{qualsum[0]}}). Mexico's life expectancy was {{expectancies[1]}} ({{qualsum[1]}}). The US's life expectancy was {{expectancies[2]}} ({{qualsum[2]}}).</p>
   <div id="north_america">
     {% include 'north_america.svg' %}
   </div>
-
+  <h2>Legend:</h2>
+  <p class = "legend" style = "background-color: rgb;">50</p>
+  <p class = "legend" style = "background-color: rgb;">60</p>
+  <p class = "legend" style = "background-color: rgb;">70</p>
+  <p class = "legend" style = "background-color: rgb;">80</p>
+  <p class = "legend" style = "background-color: rgb;">90</p>
+  <p class = "legend" style = "background-color: rgb;">100</p>
   <footer>
     All data from <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=MX-US-CA"> The World Bank</a>.
   </footer>
+
+  <script>
+    colorelem = document.getElementById("colorinfo")
+    colorvals = colorelem.innerHTML
+    colorvals = colorvals.split(";")
+
+    countryclasses = [document.getElementsByClassName("Canada"), document.getElementsByClassName("Mexico"), document.getElementsByClassName("US")]
+
+    for (let i = 0; i < countryclasses.length; i++){
+      countryclass = countryclasses[i]
+      for (let countryelem of countryclass){
+        countryelem.style.fill = "rgb" + colorvals[i]
+        console.log(countryclass, countryelem, i, "rgb" + colorvals[i])
+      }
+    }
+  </script>
 </body>
 </html>

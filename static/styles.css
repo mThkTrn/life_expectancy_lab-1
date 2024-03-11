@@ -27,3 +27,7 @@ svg{
 .dataline:hover{
   stroke: orange;
 }
+
+.noshow{
+  display: none;
+}
