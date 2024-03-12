@@ -61,27 +61,31 @@ def year():
     requested_year = request.args.get("year")
 
     expectancies = [data["Canada"][requested_year], data["Mexico"][requested_year], data["United States"][requested_year]]
-    last_expecs = [data["Canada"][str(int(requested_year)-1)], data["Mexico"][str(int(requested_year)-1)], data["United States"][str(int(requested_year)-1)]]
-    diffs = [expectancies[0] - last_expecs[0], expectancies[1] - last_expecs[1], expectancies[2] - last_expecs[2]]
-    qualsum = []
-    for diff in diffs:
-        if diff == 0:
-            qualsum.append("the same as the last year")
-        elif diff > 0:
-            qualsum.append("increased from the last year")
-        elif diff < 0:
-            qualsum.append("decreased from the last year")
+    if requested_year != "1960":
+        last_expecs = [data["Canada"][str(int(requested_year)-1)], data["Mexico"][str(int(requested_year)-1)], data["United States"][str(int(requested_year)-1)]]
+        diffs = [expectancies[0] - last_expecs[0], expectancies[1] - last_expecs[1], expectancies[2] - last_expecs[2]]
+        qualsum = []
+        for diff in diffs:
+            if diff == 0:
+                qualsum.append("the same as the last year")
+            elif diff > 0:
+                qualsum.append("increased from the last year")
+            elif diff < 0:
+                qualsum.append("decreased from the last year")
+    else:
+        qualsum = ["there is no previous year for comparison"]*3
 
     def expectancyToColor(expectancy):
-        return f"({round(255-((expectancy-50) * (255/50)))},{round(255-((expectancy-50) * (255/50)))}, 255)"
+        return f"({round(255-((expectancy-50) * (255/50)), 2)},{round(255-((expectancy-50) * (255/50)), 2)}, 255)"
     
     colors = [expectancyToColor(j) for j in expectancies]
 
     colorstr = ";".join(colors)
     print(colors, colorstr)
     expectancies = [round(expectancy) for expectancy in expectancies]
-    legendvals  = [expectancyToColor(age for age in range(50, 110, 10))]
+    legendvals  = [expectancyToColor(50), expectancyToColor(60), expectancyToColor(70), expectancyToColor(80), expectancyToColor(90) ,expectancyToColor(100)]
     print(legendvals)
-    return render_template('year.html', year = requested_year, colors = colors, colorstr = colorstr, expectancies = expectancies, qualsum = qualsum)
+    print(legendvals)
+    return render_template('year.html', year = requested_year, colors = colors, colorstr = colorstr, expectancies = expectancies, qualsum = qualsum, legendvals = legendvals)
 
 app.run(debug=True)

@@ -3,6 +3,8 @@ html{
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+  background-color: antiquewhite;
+  text-align: center;
 }
 
 svg{
@@ -30,4 +32,21 @@ svg{
 
 .noshow{
   display: none;
+}
+.legend{
+  width:3vw;
+  border: 2px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.legendcont{
+  display: flex;
+}
+
+.fullcont{
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
 }

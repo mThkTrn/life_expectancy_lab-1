@@ -9,16 +9,27 @@
 
   <h1>Life Expectancy Lab - Madhavendra Thakur</h1>
   <p>These are the life expectancies in North America in {{year}}. Canada's life expectancy was {{expectancies[0]}} ({{qualsum[0]}}). Mexico's life expectancy was {{expectancies[1]}} ({{qualsum[1]}}). The US's life expectancy was {{expectancies[2]}} ({{qualsum[2]}}).</p>
-  <div id="north_america">
-    {% include 'north_america.svg' %}
-  </div>
-  <h2>Legend:</h2>
-  <p class = "legend" style = "background-color: rgb;">50</p>
-  <p class = "legend" style = "background-color: rgb;">60</p>
-  <p class = "legend" style = "background-color: rgb;">70</p>
-  <p class = "legend" style = "background-color: rgb;">80</p>
-  <p class = "legend" style = "background-color: rgb;">90</p>
-  <p class = "legend" style = "background-color: rgb;">100</p>
+  <br>
+
+<div class = "fullcont">
+  <span>
+  <h2>Legend (colors for life expectancies):</h2>
+  <div class = "legendcont">
+  <p class = "legend" style = "background-color: rgb(255.0,255.0, 255);">50</p>
+  <p class = "legend" style = "background-color: rgb(204.0,204.0, 255);">60</p>
+  <p class = "legend" style = "background-color: rgb(153.0,153.0, 255);">70</p>
+  <p class = "legend" style = "background-color: rgb(102.0,102.0, 255);">80</p>
+  <p class = "legend" style = "background-color: rgb(102.0,102.0, 255);">90</p>
+  <p class = "legend" style = "background-color: rgb(0.0,0.0, 255);">100</p>
+</div>
+</span>
+
+<div id="north_america">
+  {% include 'north_america.svg' %}
+</div>
+
+</div>
+
   <footer>
     All data from <a href="https://data.worldbank.org/indicator/SP.DYN.LE00.IN?locations=MX-US-CA"> The World Bank</a>.
   </footer>
